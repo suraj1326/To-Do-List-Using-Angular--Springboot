@@ -1,0 +1,34 @@
+<div class="container">
+<h1 class="text-success" >Springboot+angular CRUD</h1>
+<form (ngSubmit)="createTask()">
+   <div class="row mt-5">
+    <div class="col-6">
+        <input type="text" class="form-control"  [(ngModel)]="newTask.description" name="newtaskdescription">
+    </div>
+    <div class="col-2">
+        <button class="btn btn-success"type="submit">Add Task</button>
+    </div>
+   </div>
+   <div class="row mt-5">
+    <div class="col-6">
+       <div *ngIf="!(tasks.length>0);else tasklist">
+        <h2>NoData</h2>
+       </div>
+    </div>
+    <ng-template #tasklist>
+        <ul class="list-group" *ngFor="let task of tasks;">
+            <li class="list-group-item">
+                <div class="row ">
+                    <div class="col-6 bg-secondary text-light">
+                        <p>{{task.description}}</p>
+                    </div>
+                    <div class="col-6">
+                        Edit|Delete
+                    </div>
+                </div>   
+            </li>          
+        </ul>     
+    </ng-template>
+  </div>
+  </form>
+   
